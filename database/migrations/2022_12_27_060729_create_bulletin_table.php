@@ -14,7 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bulletin', function (Blueprint $table) {
-            $table->id();
+            $table->id('bulletin_id');
+            $table->string('bulletin_title');
+            $table->string('bulletin_text');
+            $table->binary('bulletin_picture');
+            $table->date('bulletin_date');
+            //$table->foreignId('hosd_id')->constrained();
+            // $table->foreignId('comm_id')->constrained();
+            // $table->foreignId('coor_id')->constrained();
+            // $table->foreignId('std_id')->constrained();
+            // $table->foreignId('lecturer_id')->constrained();
             $table->timestamps();
         });
     }
