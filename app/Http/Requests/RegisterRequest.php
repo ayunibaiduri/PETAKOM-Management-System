@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BulletinStoreRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
+    use PasswordValidationRules;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,9 +26,11 @@ class BulletinStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'bulletin_title' =>'required|string',
-            'bulletin_text' =>'required|string',
-            'users' =>'required|string',
+            'name' => 'required|string|max:100',
+            'username'=>'required|string|max:100',
+            'ic_number'=>'required|string|max:100',
+            'email' => 'required|string|max:100|email|unique:users,email',
+            'password' => $this->passwordRules(),
         ];
     }
 }
