@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login',[UserController::class,"login"])->name('api.login');
 Route::post('register',[UserController::class,"register"]);
-Route::get('bulletin',[BulletinController::class,"index"]);
+
 //add bulletin
 // Route::post('bulletin',[BulletinController::class,"store"]);
 
@@ -30,14 +30,14 @@ Route::get('bulletin',[BulletinController::class,"index"]);
 //     return $request->user();
 // });
 Route::middleware('auth:sanctum')->group(function () {
-//     // //list of blog and users
-//     // Route::get('blog-posts',[BlogPostController::class,"index"]);
-//     //add blog
+    //list of bulletin
+    Route::get('bulletin',[BulletinController::class,"index"]);
+    //add bulletin
     Route::post('bulletin',[BulletinController::class,"store"]);
-//     // //edit blog
-//     // Route::put('blog-posts/{id}',[BlogPostController::class,"update"]);
-//     // //delete blog
-//     // Route::delete('blog-posts/{id}',[BlogPostController::class,"destroy"]);
+    // edit blog
+    Route::put('bulletin/{id}',[BulletinController::class,"update"]);
+    // delete blog
+    Route::delete('bulletin/{id}',[BulletinController::class,"destroy"]);
 //     // //edit user
 //     // Route::put('user/{id}',[UserController::class,"update"]);
 //     // //delete user

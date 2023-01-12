@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BulletinEditRequest;
 use App\Http\Requests\BulletinStoreRequest;
 use App\Models\Bulletin;
 use Exception;
@@ -14,33 +15,28 @@ use Illuminate\Support\Facades\Auth;
 class BulletinController extends BaseController
 {
     public function index (){
-        //query data from table blog post
+        //query data from table bulletin
         $bulletin= Bulletin::get();
-        //to find specific data from the database by its id
-        //$blogPost = BlogPost::find(11);
-        //return list of blog post
+        //return list of bulletin
         return $bulletin;
-        //to use resource as resource let us design the output that we wanted
-        //$blogPost = User::find(11);
-        //return new UserResource($user);
+        
     }
     public function store(BulletinStoreRequest $request){
-        // $validate = $request->validate();
-        // try{
-        // $bulletin = Bulletin::create(
-        //     [
-        //         "title" => $validate['title'],
-        //         "body" => $validate['body'],
-        //         "user_id" => $validate['user_id'],
-        //     ]
-        // );
-        // return $bulletin;
-        // }catch(Exception $e){
-        //     $e -> getMessage();
-        // }
         $validated = $request->validated();//validate input
         $validated['user_id'] = Auth::user()->id;//assign current logged in user id
         $bulletin = Bulletin::create($validated);//create blog post
+        return $bulletin;
+    }
+    public function update(BulletinEditRequest $request,$bulletin_id){
+        $validated = $request->validated();//validate input
+        $validated['user_id'] = Auth::user()->id;//assign current logged in user id
+        $bulletin = Bulletin::find($bulletin_id);
+        $bulletin->update($validated);//update bulletin
+        return $bulletin;
+    }
+    public function destroy($id){
+        $bulletin = Bulletin::find($id);//find id to be deleted
+        $bulletin->delete();//delete process
         return $bulletin;
     }
 }
