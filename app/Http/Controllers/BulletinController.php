@@ -15,11 +15,17 @@ use Illuminate\Support\Facades\Auth;
 class BulletinController extends BaseController
 {
     public function index (){
-        //query data from table bulletin
+        // //query data from table bulletin
         $bulletin= Bulletin::get();
         //return list of bulletin
         return $bulletin;
-        
+    //     $bulletins = Bulletin::all();
+    // return view('bulletin')->with('bulletins', $bulletins);
+
+    }
+    public function Show (){
+        $data = Bulletin::all();
+        return view ('bulletin',compact('data'));
     }
     public function store(BulletinStoreRequest $request){
         $validated = $request->validated();//validate input

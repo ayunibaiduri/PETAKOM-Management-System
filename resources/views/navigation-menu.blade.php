@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark class="block h-9 w-auto"/>
                     </a>
                 </div>
 
@@ -16,6 +16,30 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
+            </div>
+            <div class="flex">
+                <!-- Navigation Links -->
+                    <x-jet-nav-link href="{{ route('proposal') }}" :active="request()->routeIs('proposal')">
+                        {{ __('Proposal') }}
+                    </x-jet-nav-link>
+            </div>
+            <div class="flex">
+                <!-- Navigation Links -->
+                    <x-jet-nav-link href="{{ route('activities') }}" :active="request()->routeIs('activities')">
+                        {{ __('Activities') }}
+                    </x-jet-nav-link>
+            </div>
+            <div class="flex">
+                <!-- Navigation Links -->
+                    <x-jet-nav-link href="{{ route('election') }}" :active="request()->routeIs('election')">
+                        {{ __('Election') }}
+                    </x-jet-nav-link>
+            </div>
+            <div class="flex">
+                <!-- Navigation Links -->
+                    <x-jet-nav-link href="{{ route('bulletin') }}" :active="request()->routeIs('bulletin')">
+                        {{ __('Bulletin') }}
+                    </x-jet-nav-link>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

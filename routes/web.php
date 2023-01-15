@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BulletinController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,21 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/activities', function () {
+        return view('activities');
+    })->name('activities');
+    Route::get('/proposal', function () {
+        return view('proposal');
+    })->name('proposal');
+    Route::get('/election', function () {
+        return view('election');
+    })->name('election');
+    Route::get('/bulletin', function () {
+        return view('bulletin');
+    })->name('bulletin');
+    // Route::get('/',[BulletinController::class,'Show']);
+    // Route::get('/bulletins','BulletinController@index');
+    // Route::resource('bulletin', BulletinController::class);
+
+
 });
