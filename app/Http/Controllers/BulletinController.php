@@ -23,10 +23,10 @@ class BulletinController extends BaseController
     // return view('bulletin')->with('bulletins', $bulletins);
 
     }
-    public function Show (){
-        $data = Bulletin::all();
-        return view ('bulletin',compact('data'));
-    }
+    // public function Show (){
+    //     $data = Bulletin::all();
+    //     return view ('bulletin',compact('data'));
+    // }
     public function store(BulletinStoreRequest $request){
         $validated = $request->validated();//validate input
         $validated['user_id'] = Auth::user()->id;//assign current logged in user id

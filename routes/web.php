@@ -35,8 +35,9 @@ Route::middleware([
     Route::get('/election', function () {
         return view('election');
     })->name('election');
-    Route::get('/bulletin', function () {
-        return view('bulletin');
+    Route::get('/bulletin', function(){
+        return view('bulletin',[BulletinController::class,"index"]
+    );
     })->name('bulletin');
     // Route::get('/',[BulletinController::class,'Show']);
     // Route::get('/bulletins','BulletinController@index');
